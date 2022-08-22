@@ -1,5 +1,23 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart'
+    show
+        BottomAppBar,
+        BuildContext,
+        CircularNotchedRectangle,
+        Curves,
+        Icon,
+        IconButton,
+        Icons,
+        MainAxisAlignment,
+        MediaQuery,
+        PageController,
+        Row,
+        SizedBox,
+        StatelessWidget,
+        Theme,
+        Widget;
 
+// ignore: must_be_immutable
 class BottomNav extends StatelessWidget {
   BottomNav({super.key, required this.controller});
   PageController controller;
@@ -51,15 +69,16 @@ class BottomNav extends StatelessWidget {
                             duration: Duration(microseconds: 300),
                             curve: Curves.easeInOut);
                       },
-                      icon: Icon(Icons.person),
+                      icon: Icon(Icons.border_color),
                     ),
+                    /* Text("Home"), */
                     IconButton(
                       onPressed: () {
                         controller.animateToPage(3,
                             duration: Duration(microseconds: 300),
                             curve: Curves.easeInOut);
                       },
-                      icon: Icon(Icons.bookmark),
+                      icon: Icon(Icons.wallet),
                     ),
                   ]),
             ),

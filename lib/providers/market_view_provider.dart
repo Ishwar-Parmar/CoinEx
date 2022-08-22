@@ -1,4 +1,5 @@
 import 'package:exchange/models/crypto_model/all_crypto_model.dart';
+import 'package:exchange/models/crypto_model/crypto_data.dart';
 import 'package:exchange/network/api_provider.dart';
 import 'package:exchange/network/response_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,4 +33,6 @@ class MarketViewProvider extends ChangeNotifier {
       print(e.toString());
     }
   }
+
+  void configSearch(List<CryptoData> searchList) {}
 }

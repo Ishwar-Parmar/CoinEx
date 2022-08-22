@@ -38,8 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     userProvider = Provider.of<UserDataProvider>(context);
 
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    return Scaffold(
+    var scaffold = Scaffold(
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -506,6 +505,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         },
       ),
     );
+    return scaffold;
   }
 
   Widget signupBtn() {

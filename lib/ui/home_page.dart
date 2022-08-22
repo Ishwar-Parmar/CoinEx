@@ -48,140 +48,117 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final cryptoProvider = Provider.of<CryptoDataProvider>(context);
 
-    var height = MediaQuery.of(context).size.height;
-
     var primaryColor = Theme.of(context).primaryColor;
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-        drawer: const Drawer(),
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          actions: const [
-            ThemeSwitcher(),
-          ],
-          title: const Text("Karami Exchange "),
-          titleTextStyle: textTheme.titleLarge,
-        ),
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                // PageView
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, left: 5, right: 5),
-                  child: SizedBox(
-                    height: 160,
-                    width: double.infinity,
-                    child: Stack(
-                      children: [
-                        HomePageView(controller: _pageViewController),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 10.0),
-                            child: SmoothPageIndicator(
-                              controller: _pageViewController,
-                              count: 4,
-                              effect: const ExpandingDotsEffect(
-                                  dotWidth: 10, dotHeight: 10),
-                              onDotClicked: (index) =>
-                                  _pageViewController.animateToPage(index,
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeInOut),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-
-                SizedBox(
-                  height: 30,
-                  width: double.infinity,
-                  child: Marquee(
-                    text: '🔊 this is place for news in application ',
-                    style: textTheme.bodySmall,
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0, right: 5),
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            padding: const EdgeInsets.all(20),
-                            backgroundColor: Colors.green[700]),
-                        child: Text("buy"),
-                      )),
-                      const SizedBox(
-                        width: 10,
+    var sizedBox = SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            // PageView
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 5, right: 5),
+              child: SizedBox(
+                height: 160,
+                width: double.infinity,
+                child: Stack(
+                  children: [
+                    HomePageView(controller: _pageViewController),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: SmoothPageIndicator(
+                          controller: _pageViewController,
+                          count: 4,
+                          effect: const ExpandingDotsEffect(
+                              dotWidth: 10, dotHeight: 10),
+                          onDotClicked: (index) =>
+                              _pageViewController.animateToPage(index,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut),
+                        ),
                       ),
-                      Expanded(
-                          child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            padding: const EdgeInsets.all(20),
-                            backgroundColor: Colors.red[700]),
-                        child: Text("sell"),
-                      )),
-                    ],
-                  ),
+                    )
+                  ],
                 ),
+              ),
+            ),
 
-                Padding(
-                  padding: const EdgeInsets.only(right: 5.0, left: 5),
-                  child: Row(
-                    children: [
-                      Wrap(
-                        spacing: 8,
-                        children: List.generate(_choicesList.length, (index) {
-                          return ChoiceChip(
-                              label: Text(_choicesList[index],
-                                  style: textTheme.titleSmall),
-                              selected: defaultChoiceIndex == index,
-                              selectedColor: Colors.blue,
-                              onSelected: (value) {
-                                setState(() {
-                                  defaultChoiceIndex =
-                                      value ? index : defaultChoiceIndex;
-                                  switch (index) {
-                                    case 0:
-                                      cryptoProvider.getTopMarketCapData();
-                                      break;
-                                    case 1:
-                                      cryptoProvider.getTopGainersData();
-                                      break;
-                                    case 2:
-                                      cryptoProvider.getTopLosersData();
-                                      break;
-                                  }
-                                });
-                              });
-                        }),
-                      )
-                    ],
+           
+
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0, right: 5),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        padding: const EdgeInsets.all(20),
+                        backgroundColor: Colors.green[700]),
+                    child: Text("buy"),
+                  )),
+                  const SizedBox(
+                    width: 10,
                   ),
-                ),
+                  Expanded(
+                      child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        padding: const EdgeInsets.all(20),
+                        backgroundColor: Colors.red[700]),
+                    child: Text("sell"),
+                  )),
+                ],
+              ),
+            ),
 
-                SizedBox(
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0, left: 5),
+              child: Row(
+                children: [
+                  Wrap(
+                    spacing: 8,
+                    children: List.generate(_choicesList.length, (index) {
+                      return ChoiceChip(
+                          label: Text(_choicesList[index],
+                              style: textTheme.titleSmall),
+                          selected: defaultChoiceIndex == index,
+                          selectedColor: Colors.blue,
+                          onSelected: (value) {
+                            setState(() {
+                              defaultChoiceIndex =
+                                  value ? index : defaultChoiceIndex;
+                              switch (index) {
+                                case 0:
+                                  cryptoProvider.getTopMarketCapData();
+                                  break;
+                                case 1:
+                                  cryptoProvider.getTopGainersData();
+                                  break;
+                                case 2:
+                                  cryptoProvider.getTopLosersData();
+                                  break;
+                              }
+                            });
+                          });
+                    }),
+                  )
+                ],
+              ),
+            ),
+
+            /*   SizedBox(
                   height: 500,
                   child: Consumer<CryptoDataProvider>(
                       builder: (context, cryptoDataProvider, child) {
@@ -439,9 +416,21 @@ class _HomePageState extends State<HomePage> {
                     }
                   }),
                 ),
-              ],
-            ),
-          ),
-        ));
+     */
+          ],
+        ),
+      ),
+    );
+    return Scaffold(
+        drawer: const Drawer(),
+        appBar: AppBar(
+          backgroundColor: primaryColor,
+          actions: const [
+            ThemeSwitcher(),
+          ],
+          title: const Text("CoinEx"),
+          titleTextStyle: textTheme.titleLarge,
+        ),
+        body: sizedBox);
   }
 }

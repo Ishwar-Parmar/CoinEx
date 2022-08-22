@@ -1,4 +1,5 @@
 import 'package:exchange/ui/ProfilePage.dart';
+import 'package:exchange/ui/WalletPage.dart';
 import 'package:exchange/ui/home_page.dart';
 import 'package:exchange/ui/market_view_page.dart';
 import 'package:exchange/ui/ui_helper/bottom_nav.dart';
@@ -31,6 +32,7 @@ class _MainWrapperState extends State<MainWrapper> {
           HomePage(),
           MarketViewPage(),
           ProfilePage(),
+          WalletPage(),
         ],
       ),
     );

@@ -1,5 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        AssetImage,
+        BorderRadius,
+        BoxFit,
+        BuildContext,
+        ClipRRect,
+        Image,
+        PageView,
+        Radius,
+        State,
+        StatefulWidget,
+        Widget;
 
+// ignore: must_be_immutable
 class HomePageView extends StatefulWidget {
   var controller;
   HomePageView({super.key, required this.controller});
@@ -9,23 +22,13 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
-  var images = [
-    'images/a1.png',
-    'images/a2.png',
-    'images/a3.png',
-    'images/a4.png',
-  ];
+  var images = [];
   @override
   Widget build(BuildContext context) {
     return PageView(
       allowImplicitScrolling: true,
       controller: widget.controller,
-      children: [
-        myPages(images[0]),
-        myPages(images[1]),
-        myPages(images[2]),
-        myPages(images[3]),
-      ],
+      children: [],
     );
   }
 

@@ -34,6 +34,14 @@ class _MarketViewPageState extends State<MarketViewPage> {
         (Timer t) => marketProvider.getCryptoData());
   }
 
+    //  Timer.periodic(
+    //     const Duration(seconds: 1),
+    //     (Timer t) => setState(() {
+    //           get_price_from_trading_pair("$_baseCurrency", "$_fiatCurrency")
+    //               .then((newPrice) => baseToFiatPrice = newPrice);
+    //         }));
+ 
+
   @override
   void dispose() {
     timer.cancel();
